@@ -16,10 +16,10 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-screen min-h-[100vh] flex items-center justify-center overflow-hidden"
     >
       {/* Background image with overlay */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 w-full h-full">
         <img
           src="/images/hero-bg.jpg"
           alt="AUREO restaurant interior"

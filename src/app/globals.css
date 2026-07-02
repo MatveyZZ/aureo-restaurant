@@ -270,9 +270,5 @@ img[data-loading] {
     overflow-x: hidden !important;
     max-width: 100% !important;
   }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-  }
 }
+  
