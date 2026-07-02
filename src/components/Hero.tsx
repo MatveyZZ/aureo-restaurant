@@ -3,9 +3,15 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { GoldDivider } from "./ui/GoldDivider";
+import { useEffect, useState } from "react";
 
 export function Hero() {
   const t = useTranslations("hero");
+  const [seed, setSeed] = useState(0);
+
+  useEffect(() => {
+    setSeed(Math.random());
+  }, []);
 
   return (
     <section
@@ -25,27 +31,33 @@ export function Hero() {
 
       {/* Floating particles effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-[2px] h-[2px] bg-[hsl(var(--primary))] rounded-full opacity-30"
-            animate={{
-              y: [0, -100],
-              x: [0, Math.random() * 50 - 25],
-              opacity: [0, 0.5, 0],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 4,
-              ease: "easeInOut",
-            }}
-            style={{
-              left: `${20 + Math.random() * 60}%`,
-              bottom: `${10 + Math.random() * 20}%`,
-            }}
-          />
-        ))}
+        {[...Array(6)].map((_, i) => {
+          const left = 20 + ((seed * (i + 1) * 137) % 60);
+          const bottom = 10 + ((seed * (i + 1) * 89) % 20);
+          const delay = seed * (i + 1) * 4;
+
+          return (
+            <motion.div
+              key={i}
+              className="absolute w-[2px] h-[2px] bg-[hsl(var(--primary))] rounded-full opacity-30"
+              animate={{
+                y: [0, -100],
+                x: [0, ((seed * (i + 1) * 251) % 50) - 25],
+                opacity: [0, 0.5, 0],
+              }}
+              transition={{
+                duration: 4 + ((seed * (i + 1) * 17) % 4),
+                repeat: Infinity,
+                delay: delay % 4,
+                ease: "easeInOut",
+              }}
+              style={{
+                left: `${left}%`,
+                bottom: `${bottom}%`,
+              }}
+            />
+          );
+        })}
       </div>
 
       {/* Content */}

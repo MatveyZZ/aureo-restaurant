@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond } from "next/font/google";
 import { Montserrat as MontserratFont } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales } from "@/i18n/request";
 import "@/app/globals.css";
@@ -50,12 +49,12 @@ export default async function LocaleLayout({ children, params }: Props) {
     notFound();
   }
 
-  const messages = await getMessages();
+  const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
 
   return (
     <html lang={locale} className={`${Cormorant.variable} ${Montserrat.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
       </body>

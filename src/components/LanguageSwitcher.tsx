@@ -1,7 +1,6 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
 import { Globe } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
@@ -13,7 +12,6 @@ const languages = [
 
 export function LanguageSwitcher() {
   const locale = useLocale();
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -28,8 +26,8 @@ export function LanguageSwitcher() {
   }, []);
 
   const handleLanguageChange = (newLocale: string) => {
-    router.push(`/${newLocale}/`);
-    setIsOpen(false);
+    // Перезагружаем страницу с новым языком — все тексты обновятся
+    window.location.href = `/${newLocale}/`;
   };
 
   const currentLang = languages.find((l) => l.code === locale);
