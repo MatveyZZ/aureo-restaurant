@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi Siamo",
+    "menu": "Menu",
+    "chef": "Lo Chef",
+    "gallery": "Galleria",
+    "contact": "Contatti"
+  },
+  "hero": {
+    "subtitle": "Ristorante Stellato Michelin",
+    "title": "AUREO",
+    "description": "L'arte della cucina italiana nella sua forma più pura e raffinata",
+    "cta": "Prenota un Tavolo"
+  },
+  "about": {
+    "title": "La Nostra Storia",
+    "subtitle": "Dal 1987",
+    "paragraph1": "AUREO nasce dalla passione di due anime: quella dello Chef Marco Bellini e quella del sommelier Elena Rossi. In un antico palazzo del centro storico, hanno creato un luogo dove la tradizione culinaria italiana incontra l'innovazione più audace.",
+    "paragraph2": "La nostra filosofia è semplice: ingredienti straordinari, trattati con rispetto e maestria. Ogni piatto racconta una storia — quella delle terre italiane, dei produttori che scegliamo con cura, della pazienza che mette ogni nostra creazione.",
+    "paragraph3": "Nel 2019, questa dedizione estrema alla qualità ha ricevuto il riconoscimento più alto: la Stella Michelin. Per noi, è un onore e una responsabilità che ci spinge ogni giorno a superare i nostri stessi standard.",
+    "stats": {
+      "stars": "Stelle Michelin",
+      "years": "Anni di Eccellenza",
+      "products": "Produttori Selezionati",
+      "wines": "Etichette nel Cantina"
+    }
+  },
+  "menu": {
+    "title": "Il Nostro Menu",
+    "subtitle": "Stagionale",
+    "description": "Il nostro menu evolve con le stagioni, celebrando i prodotti nel loro momento di massimo splendore.",
+    "categories": {
+      "antipasti": "Antipasti",
+      "primi": "Primi Piatti",
+      "secondi": "Secondi Piatti",
+      "dolci": "Dolci"
+    },
+    "tasting": "Menu Degustazione",
+    "tastingDesc": "7 portate — €185",
+    "winePairing": "Abbinamento Vini — €95"
+  },
+  "chef": {
+    "title": "Lo Chef",
+    "subtitle": "Marco Bellini",
+    "paragraph1": "Formato nelle cucine più prestigiose d'Italia e Francia, lo Chef Bellini ha sviluppato un linguaggio culinario unico che onora la tradizione italiana attraverso una lente contemporanea.",
+    "paragraph2": "La sua filosofia si basa su tre pilastri: rispetto per il prodotto, tecnica impeccabile, e un'empatia profonda verso chi siede al nostro tavolo. Ogni piatto che esce dalla nostra cucina è un invito a scoprire qualcosa di nuovo, pur nel comfort di sapori che sanno di casa.",
+    "quote": "La cucina è l'arte di trasformare l'umile in straordinario. Non spreco mai nulla, perché ogni ingrediente ha una storia da raccontare."
+  },
+  "gallery": {
+    "title": "Galleria",
+    "subtitle": "Momenti di Bellezza"
+  },
+  "contact": {
+    "title": "Contatti",
+    "subtitle": "Vieni a Trovarci",
+    "address": "Via del Corso 42, 00186 Roma, Italia",
+    "phone": "+39 06 678 9012",
+    "email": "info@aureo-roma.it",
+    "hours": {
+      "title": "Orari",
+      "lun": "Lunedì — Chiuso",
+      "mar": "Martedì - Sabato",
+      "pranzo": "Pranzo: 12:30 - 14:30",
+      "cena": "Cena: 19:00 - 23:00",
+      "dom": "Domenica",
+      "domCena": "Cena: 19:00 - 22:30"
+    },
+    "reservation": "Si consiglia la prenotazione con almeno 48 ore di anticipo"
+  },
+  "footer": {
+    "tagline": "L'arte della perfezione",
+    "rights": "© 2024 AUREO. Tutti i diritti riservati."
+  }
+}

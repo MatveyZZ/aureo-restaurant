@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "menu": "Menu",
+    "chef": "The Chef",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "Michelin Star Restaurant",
+    "title": "AUREO",
+    "description": "The art of Italian cuisine in its purest and most refined form",
+    "cta": "Reserve a Table"
+  },
+  "about": {
+    "title": "Our Story",
+    "subtitle": "Since 1987",
+    "paragraph1": "AUREO was born from the passion of two souls: Chef Marco Bellini and sommelier Elena Rossi. In an ancient palace in the historic center, they created a place where Italian culinary tradition meets the boldest innovation.",
+    "paragraph2": "Our philosophy is simple: extraordinary ingredients, treated with respect and mastery. Every dish tells a story — that of Italian lands, the producers we carefully choose, and the patience behind every creation.",
+    "paragraph3": "In 2019, this extreme dedication to quality received the highest recognition: the Michelin Star. For us, it is an honor and a responsibility that drives us every day to exceed our own standards.",
+    "stats": {
+      "stars": "Michelin Stars",
+      "years": "Years of Excellence",
+      "products": "Selected Producers",
+      "wines": "Wine Label Selection"
+    }
+  },
+  "menu": {
+    "title": "Our Menu",
+    "subtitle": "Seasonal",
+    "description": "Our menu evolves with the seasons, celebrating products at their peak of perfection.",
+    "categories": {
+      "antipasti": "Starters",
+      "primi": "First Courses",
+      "secondi": "Main Courses",
+      "dolci": "Desserts"
+    },
+    "tasting": "Tasting Menu",
+    "tastingDesc": "7 courses — €185",
+    "winePairing": "Wine Pairing — €95"
+  },
+  "chef": {
+    "title": "The Chef",
+    "subtitle": "Marco Bellini",
+    "paragraph1": "Trained in the most prestigious kitchens in Italy and France, Chef Bellini has developed a unique culinary language that honors Italian tradition through a contemporary lens.",
+    "paragraph2": "His philosophy rests on three pillars: respect for the ingredient, impeccable technique, and a deep empathy for those seated at our table. Every dish that leaves our kitchen is an invitation to discover something new, within the comfort of flavors that taste like home.",
+    "quote": "Cooking is the art of transforming the humble into the extraordinary. I never waste anything, because every ingredient has a story to tell."
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Moments of Beauty"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Visit Us",
+    "address": "Via del Corso 42, 00186 Rome, Italy",
+    "phone": "+39 06 678 9012",
+    "email": "info@aureo-roma.it",
+    "hours": {
+      "title": "Hours",
+      "lun": "Monday — Closed",
+      "mar": "Tuesday - Saturday",
+      "pranzo": "Lunch: 12:30 - 14:30",
+      "cena": "Dinner: 19:00 - 23:00",
+      "dom": "Sunday",
+      "domCena": "Dinner: 19:00 - 22:30"
+    },
+    "reservation": "Reservations recommended at least 48 hours in advance"
+  },
+  "footer": {
+    "tagline": "The art of perfection",
+    "rights": "© 2024 AUREO. All rights reserved."
+  }
+}

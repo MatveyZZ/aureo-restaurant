@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AUREO — Ristorante Stellato Michelin
 
-## Getting Started
+Премиальный сайт для итальянского ресторана со звездой Мишлен.
 
-First, run the development server:
+## 🌟 Особенности
+
+- **Мультиязычность**: Italiano, English, Русский
+- **Премиальный дизайн**: тёмная тема с золотыми акцентами
+- **Анимации**: Framer Motion для плавных переходов
+- **Адаптивность**: полная поддержка мобильных устройств
+- **Next.js 14+**: App Router, серверные компоненты
+
+## 🚀 Быстрый старт
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Откройте http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Структура проекта
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+aureo-restaurant/
+├── src/
+│   ├── app/
+│   │   └── [locale]/          # Локализованные маршруты
+│   ├── components/            # React-компоненты
+│   ├── data/                  # Данные меню
+│   └── i18n/                  # Переводы
+├── public/images/             # Изображения (заменить на свои)
+└── middleware.ts              # Маршрутизация языков
+```
 
-## Learn More
+## 🖼 Замена изображений
 
-To learn more about Next.js, take a look at the following resources:
+Все изображения находятся в `public/images/`. Замените файлы на свои:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Файл | Где используется | Размер |
+|------|-----------------|--------|
+| `hero-bg.jpg` | Hero-секция (главный экран) | 1920×1080 |
+| `about.jpg` | Секция "О нас" | 800×1000 |
+| `chef.jpg` | Секция "Шеф-повар" | 800×1000 |
+| `dish-1.jpg` | Тартар из тунца | 600×400 |
+| `dish-2.jpg` | Буррата | 600×400 |
+| `dish-3.jpg` | Карпаччо вагю | 600×400 |
+| `dish-4.jpg` | Тальятелле с лобстером | 600×400 |
+| `dish-5.jpg` | Ризотто с трюфелем | 600×400 |
+| `dish-6.jpg` | Равиоли | 600×400 |
+| `dish-7.jpg` | Сибас в соли | 600×400 |
+| `dish-8.jpg` | Ягнёнок | 600×400 |
+| `dish-9.jpg` | Оссобуко | 600×400 |
+| `dish-10.jpg` | Сфogliatella | 600×400 |
+| `dish-11.jpg` | Шоколадное блюдо | 600×400 |
+| `dish-12.jpg` | Тирамису | 600×400 |
+| `gallery-1.jpg` | Галерея (большое) | 800×600 |
+| `gallery-2.jpg` | Галерея | 600×400 |
+| `gallery-3.jpg` | Галерея | 600×400 |
+| `gallery-4.jpg` | Галерея | 600×400 |
+| `gallery-5.jpg` | Галерея | 600×400 |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌐 Языки
 
-## Deploy on Vercel
+| URL | Язык |
+|-----|------|
+| `/` | 🇮🇹 Italiano |
+| `/en/` | 🇬🇧 English |
+| `/ru/` | 🇷🇺 Русский |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠 Стек
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Next.js 14+** (App Router)
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Framer Motion** (анимации)
+- **next-intl** (i18n)
+- **Lucide React** (иконки)
+
+## 📄 Лицензия
+
+© 2024 AUREO. Все права защищены.
