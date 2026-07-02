@@ -52,7 +52,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
 
   return (
-    <html lang={locale} className={`${Cormorant.variable} ${Montserrat.variable} h-full antialiased`} viewport="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <html lang={locale} className={`${Cormorant.variable} ${Montserrat.variable} h-full antialiased`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </head>
