@@ -49,16 +49,6 @@
     overscroll-behavior-y: contain;
   }
 
-  /* Hide scrollbar on mobile */
-  body::-webkit-scrollbar {
-    display: none;
-  }
-
-  body {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
   ::selection {
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
