@@ -36,29 +36,29 @@ export function Gallery() {
   const t = useTranslations("gallery");
 
   return (
-    <section id="gallery" className="py-24 md:py-32 relative bg-[hsl(var(--secondary))]/30">
-      <div className="section-padding">
+    <section id="gallery" className="py-16 md:py-24 lg:py-32 relative bg-[hsl(var(--secondary))]/30">
+      <div className="px-4 md:px-6 lg:px-12 xl:px-32">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-16">
           <AnimatedSection>
-            <span className="heading-sm text-[hsl(var(--primary))] tracking-[0.3em] uppercase block mb-4">
+            <span className="text-[10px] md:text-xs lg:text-sm text-[hsl(var(--primary))] tracking-[0.2em] md:tracking-[0.3em] uppercase block mb-3 md:mb-4">
               {t("subtitle")}
             </span>
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <h2 className="heading-lg text-[hsl(var(--foreground))] mb-6">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[hsl(var(--foreground))] mb-4 md:mb-6">
               {t("title")}
             </h2>
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
-            <GoldDivider width="60px" className="mx-auto" />
+            <div className="w-12 md:w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto" />
           </AnimatedSection>
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
           {galleryImages.map((image, i) => (
             <AnimatedSection
               key={i}

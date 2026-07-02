@@ -61,13 +61,13 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6">
+      <div className="relative z-10 text-center px-4 md:px-6 py-20 md:py-0">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          <span className="heading-sm text-[hsl(var(--muted-foreground))] tracking-[0.3em] uppercase block mb-6">
+          <span className="text-[10px] md:text-xs lg:text-sm text-[hsl(var(--muted-foreground))] tracking-[0.2em] md:tracking-[0.3em] uppercase block mb-4 md:mb-6">
             {t("subtitle")}
           </span>
         </motion.div>
@@ -76,16 +76,16 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mb-6"
+          className="mb-4 md:mb-6"
         >
-          <GoldDivider width="120px" className="mx-auto mb-8" />
+          <div className="w-16 md:w-20 lg:w-24 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto mb-6 md:mb-8" />
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.8 }}
-          className="heading-xl gold-gradient font-light tracking-wider mb-8"
+          className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl gold-gradient font-light tracking-wider mb-6 md:mb-8"
         >
           AUREO
         </motion.h1>
@@ -94,7 +94,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.1 }}
-          className="text-[hsl(var(--muted-foreground))] text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed mb-12"
+          className="text-[hsl(var(--muted-foreground))] text-sm md:text-base lg:text-lg font-light max-w-xl md:max-w-2xl mx-auto leading-relaxed mb-8 md:mb-12"
         >
           {t("description")}
         </motion.p>
@@ -106,7 +106,7 @@ export function Hero() {
         >
           <a
             href="#contact"
-            className="inline-block px-10 py-4 text-xs tracking-[0.3em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500"
+            className="inline-block px-8 md:px-10 py-3 md:py-4 text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500"
           >
             {t("cta")}
           </a>
@@ -118,15 +118,15 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-3"
       >
-        <span className="text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.3em] uppercase">
+        <span className="text-[hsl(var(--muted-foreground))] text-[8px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] uppercase">
           Scroll
         </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-[1px] h-8 bg-gradient-to-b from-[hsl(var(--primary))] to-transparent"
+          className="w-[1px] h-6 md:h-8 bg-gradient-to-b from-[hsl(var(--primary))] to-transparent"
         />
       </motion.div>
     </section>
