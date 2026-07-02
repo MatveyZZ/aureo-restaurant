@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useState } from "react";
 import { menuData } from "@/data/menu";
 import { AnimatedSection } from "./ui/AnimatedSection";
@@ -17,9 +17,18 @@ const categories: { key: Category; label: string }[] = [
 
 export function Menu() {
   const t = useTranslations("menu");
+  const locale = useLocale();
   const [activeCategory, setActiveCategory] = useState<Category>("antipasti");
 
   const currentItems = menuData[activeCategory];
+
+  const getDescription = (item: typeof menuData.antipasti[0]) => {
+    switch (locale) {
+      case "ru": return item.descriptionRu;
+      case "en": return item.descriptionEn;
+      default: return item.description;
+    }
+  };
 
   return (
     <section id="menu" className="py-16 md:py-24 lg:py-32 relative bg-[hsl(var(--secondary))]/30">
@@ -74,7 +83,7 @@ export function Menu() {
             <AnimatedSection key={item.id} delay={0.1 * i}>
               <div className="group flex gap-4 md:gap-6 lg:gap-10 py-6 md:py-8 border-b border-[hsl(var(--border))] last:border-0">
                 {/* Image */}
-                <div className="hidden md:block w-20 h-20 lg:w-24 lg:h-24 flex-shrink-0 overflow-hidden">
+                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex-shrink-0 overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.name}
@@ -93,7 +102,7 @@ export function Menu() {
                     </span>
                   </div>
                   <p className="text-[hsl(var(--muted-foreground))] text-xs md:text-sm font-light leading-relaxed">
-                    {item.description}
+                    {getDescription(item)}
                   </p>
                 </div>
               </div>
