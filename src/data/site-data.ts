@@ -444,7 +444,12 @@ export async function updateContent(content: Partial<SiteContent>): Promise<Site
     settings: { ...existing.settings, ...(content.settings ?? {}) },
     lastUpdated: new Date().toISOString(),
   };
-  writeContent(merged);
+  // Try to persist, but don't fail on ephemeral FS (Netlify)
+  try {
+    writeContent(merged);
+  } catch {
+    // Read-only filesystem — changes work in memory but won't persist across deployments
+  }
   return merged;
 }
 
