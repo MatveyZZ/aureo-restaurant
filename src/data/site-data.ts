@@ -409,14 +409,14 @@ function readContent(): SiteContent {
   if (existsSync(DATA_FILE)) {
     try {
       const raw = readFileSync(DATA_FILE, "utf-8");
-      return JSON.parse(raw);
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.menu && parsed.about) return parsed;
     } catch {
-      // corrupted file, regenerate
+      // corrupted file, fall through to defaults
     }
   }
-  const content = getDefaultContent();
-  writeContent(content);
-  return content;
+  // File missing or corrupted — return defaults (do NOT write on Netlify, ephemeral FS)
+  return getDefaultContent();
 }
 
 function writeContent(content: SiteContent): void {
