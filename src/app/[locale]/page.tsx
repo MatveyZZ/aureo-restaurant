@@ -1,11 +1,11 @@
 import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Menu } from "@/components/Menu";
-import { Chef } from "@/components/Chef";
-import { Gallery } from "@/components/Gallery";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
+import { Hero } from "@/components/cms/Hero";
+import { About } from "@/components/cms/About";
+import { Menu } from "@/components/cms/Menu";
+import { Chef } from "@/components/cms/Chef";
+import { Gallery } from "@/components/cms/Gallery";
+import { Contact } from "@/components/cms/Contact";
+import { Footer } from "@/components/cms/Footer";
 
 export default function Home() {
   return (
