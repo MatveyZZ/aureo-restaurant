@@ -62,10 +62,10 @@ export default function DashboardPage() {
         <div className="flex items-center gap-4">
           <span className="text-xl gold-gradient tracking-[0.3em] uppercase font-light">AUREO</span>
           <div className="w-px h-4 bg-[hsl(var(--border))]" />
-          <span className="text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.3em] uppercase">CMS</span>
+          <span className="text-[hsl(var(--muted-foreground))] text-xs tracking-[0.3em] uppercase">CMS</span>
         </div>
         <form action="/api/auth/logout" method="POST">
-          <button type="submit" className="text-[10px] tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">
+          <button type="submit" className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">
             Выйти
           </button>
         </form>
@@ -79,7 +79,7 @@ export default function DashboardPage() {
           </h1>
           <div className="w-24 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent mb-4" />
           {stats?.lastUpdated && (
-            <p className="text-[hsl(var(--muted-foreground))] text-xs tracking-wider">
+            <p className="text-[hsl(var(--muted-foreground))] text-sm tracking-wider">
               Последнее обновление: {new Date(stats.lastUpdated).toLocaleString("ru-RU")}
             </p>
           )}
@@ -94,20 +94,20 @@ export default function DashboardPage() {
               className="group block border border-[hsl(var(--border))] p-6 hover:border-[hsl(var(--primary))] transition-all duration-500"
             >
               <div className="text-2xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity">{card.icon}</div>
-              <h3 className="text-sm tracking-[0.15em] uppercase text-[hsl(var(--foreground))] group-hover:text-[hsl(var(--primary))] transition-colors duration-500">
+              <h3 className="text-base tracking-[0.15em] uppercase text-[hsl(var(--foreground))] group-hover:text-[hsl(var(--primary))] transition-colors duration-500">
                 {card.title}
               </h3>
-              <p className="text-xs text-[hsl(var(--muted-foreground))] mt-2 font-light">{card.subtitle}</p>
+              <p className="text-sm text-[hsl(var(--muted-foreground))] mt-2 font-light">{card.subtitle}</p>
             </Link>
           ))}
         </div>
 
         {/* Quick Start */}
         <div className="border border-[hsl(var(--border))] p-8">
-          <h2 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--foreground))] mb-6">
+          <h2 className="text-base tracking-[0.2em] uppercase text-[hsl(var(--foreground))] mb-6">
             Быстрый старт
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-[hsl(var(--muted-foreground))] font-light">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-[hsl(var(--muted-foreground))] font-light">
             <div className="flex gap-3">
               <span className="text-[hsl(var(--primary))]">01</span>
               <span>Отредактируйте меню блюд</span>

@@ -155,14 +155,14 @@ export default function ContentEditorPage() {
       {/* Header */}
       <header className="border-b border-[hsl(var(--border))] px-8 py-5 flex items-center justify-between sticky top-0 bg-[hsl(var(--background))]/95 backdrop-blur-sm z-10">
         <div className="flex items-center gap-4">
-          <Link href="/admin" className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">← Назад</Link>
+          <Link href="/admin" className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">← Назад</Link>
           <div className="w-px h-4 bg-[hsl(var(--border))]" />
-          <h1 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--foreground))]">Редактор контента</h1>
+          <h1 className="text-base tracking-[0.2em] uppercase text-[hsl(var(--foreground))]">Редактор контента</h1>
         </div>
         <div className="flex items-center gap-4">
-          {saved && <span className="text-xs text-[hsl(var(--primary))] tracking-[0.2em] animate-pulse">Сохранено</span>}
+          {saved && <span className="text-sm text-[hsl(var(--primary))] tracking-[0.2em] animate-pulse">Сохранено</span>}
           {error && <span className="text-xs text-red-400 tracking-wider">{error}</span>}
-          <button onClick={handleSave} disabled={saving} className="px-6 py-2.5 text-[10px] tracking-[0.3em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500 disabled:opacity-30">
+          <button onClick={handleSave} disabled={saving} className="px-6 py-2.5 text-xs tracking-[0.3em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500 disabled:opacity-30">
             {saving ? "Сохранение..." : "Сохранить"}
           </button>
         </div>
@@ -176,7 +176,7 @@ export default function ContentEditorPage() {
               <button
                 key={s.key}
                 onClick={() => setActiveSection(s.key)}
-                className={`w-full text-left px-4 py-3 text-xs tracking-[0.15em] uppercase transition-all duration-300 ${
+                className={`w-full text-left px-4 py-3 text-sm tracking-[0.15em] uppercase transition-all duration-300 ${
                   activeSection === s.key
                     ? "text-[hsl(var(--primary))] border-l-2 border-[hsl(var(--primary))] bg-[hsl(var(--primary))]/5"
                     : "text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]"
@@ -212,12 +212,12 @@ function AboutEditor({ content, updateField, updateStat, addStat, removeStat }: 
   return (
     <div className="space-y-10 max-w-3xl">
       <div>
-        <h2 className="text-lg tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-1">О ресторане</h2>
+        <h2 className="text-xl tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-1">О ресторане</h2>
         <div className="w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent" />
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Заголовки</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Заголовки</h3>
         <FormField label="Заголовок (IT)" value={content.title} onChange={(v: string) => updateField("title", v)} />
         <FormField label="Заголовок (EN)" value={content.titleEn} onChange={(v: string) => updateField("titleEn", v)} />
         <FormField label="Заголовок (RU)" value={content.titleRu} onChange={(v: string) => updateField("titleRu", v)} />
@@ -227,7 +227,7 @@ function AboutEditor({ content, updateField, updateStat, addStat, removeStat }: 
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Тексты</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Тексты</h3>
         <TextAreaField label="Текст 1 (IT)" value={content.paragraph1} onChange={(v: string) => updateField("paragraph1", v)} rows={4} />
         <TextAreaField label="Текст 1 (EN)" value={content.paragraph1En} onChange={(v: string) => updateField("paragraph1En", v)} rows={4} />
         <TextAreaField label="Текст 1 (RU)" value={content.paragraph1Ru} onChange={(v: string) => updateField("paragraph1Ru", v)} rows={4} />
@@ -240,10 +240,10 @@ function AboutEditor({ content, updateField, updateStat, addStat, removeStat }: 
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Статистика</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Статистика</h3>
         <div className="flex items-center justify-between">
           <span />
-          <button onClick={addStat} className="text-xs text-[hsl(var(--primary))] tracking-[0.2em] uppercase hover:underline">+ Добавить</button>
+          <button onClick={addStat} className="text-sm text-[hsl(var(--primary))] tracking-[0.2em] uppercase hover:underline">+ Добавить</button>
         </div>
         {content.stats.map((stat, i) => (
           <div key={i} className="flex items-start gap-2 p-4 border border-[hsl(var(--border))]">
@@ -273,7 +273,7 @@ function ChefEditor({ content, updateField }: {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Имя и должность</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Имя и должность</h3>
         <FormField label="Имя (IT)" value={content.name} onChange={(v: string) => updateField("name", v)} />
         <FormField label="Имя (EN)" value={content.nameEn} onChange={(v: string) => updateField("nameEn", v)} />
         <FormField label="Имя (RU)" value={content.nameRu} onChange={(v: string) => updateField("nameRu", v)} />
@@ -283,7 +283,7 @@ function ChefEditor({ content, updateField }: {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Тексты</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Тексты</h3>
         <TextAreaField label="Текст 1 (IT)" value={content.paragraph1} onChange={(v: string) => updateField("paragraph1", v)} rows={4} />
         <TextAreaField label="Текст 1 (EN)" value={content.paragraph1En} onChange={(v: string) => updateField("paragraph1En", v)} rows={4} />
         <TextAreaField label="Текст 1 (RU)" value={content.paragraph1Ru} onChange={(v: string) => updateField("paragraph1Ru", v)} rows={4} />
@@ -313,7 +313,7 @@ function ContactEditor({ content, updateField, updateNested }: {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Контактная информация</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Контактная информация</h3>
         <FormField label="Адрес (IT)" value={content.address} onChange={(v: string) => updateField("address", v)} />
         <FormField label="Адрес (EN)" value={content.addressEn} onChange={(v: string) => updateField("addressEn", v)} />
         <FormField label="Адрес (RU)" value={content.addressRu} onChange={(v: string) => updateField("addressRu", v)} />
@@ -323,7 +323,7 @@ function ContactEditor({ content, updateField, updateNested }: {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Часы работы</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Часы работы</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <FormFieldSmall label="Обед начало" value={content.hours.lunchStart} onChange={(v: string) => updateNested("hours", "lunchStart", v)} />
           <FormFieldSmall label="Обед конец" value={content.hours.lunchEnd} onChange={(v: string) => updateNested("hours", "lunchEnd", v)} />
@@ -335,7 +335,7 @@ function ContactEditor({ content, updateField, updateNested }: {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Бронирование</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Бронирование</h3>
         <FormField label="Текст (IT)" value={content.reservationText} onChange={(v: string) => updateField("reservationText", v)} />
         <FormField label="Текст (EN)" value={content.reservationTextEn} onChange={(v: string) => updateField("reservationTextEn", v)} />
         <FormField label="Текст (RU)" value={content.reservationTextRu} onChange={(v: string) => updateField("reservationTextRu", v)} />
@@ -358,7 +358,7 @@ function SettingsEditor({ content, updateField }: {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Общие</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Общие</h3>
         <FormField label="Название (IT)" value={content.restaurantName} onChange={(v: string) => updateField("restaurantName", v)} />
         <FormField label="Название (EN)" value={content.restaurantNameEn} onChange={(v: string) => updateField("restaurantNameEn", v)} />
         <FormField label="Название (RU)" value={content.restaurantNameRu} onChange={(v: string) => updateField("restaurantNameRu", v)} />
@@ -368,7 +368,7 @@ function SettingsEditor({ content, updateField }: {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Hero секция</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Hero секция</h3>
         <FormField label="Подзаголовок (IT)" value={content.heroSubtitle} onChange={(v: string) => updateField("heroSubtitle", v)} />
         <FormField label="Подзаголовок (EN)" value={content.heroSubtitleEn} onChange={(v: string) => updateField("heroSubtitleEn", v)} />
         <FormField label="Подзаголовок (RU)" value={content.heroSubtitleRu} onChange={(v: string) => updateField("heroSubtitleRu", v)} />
@@ -379,7 +379,7 @@ function SettingsEditor({ content, updateField }: {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Дегустационное меню</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Дегустационное меню</h3>
         <FormField label="Название (IT)" value={content.tastingMenuText} onChange={(v: string) => updateField("tastingMenuText", v)} />
         <FormField label="Название (EN)" value={content.tastingMenuTextEn} onChange={(v: string) => updateField("tastingMenuTextEn", v)} />
         <FormField label="Название (RU)" value={content.tastingMenuTextRu} onChange={(v: string) => updateField("tastingMenuTextRu", v)} />
@@ -390,14 +390,14 @@ function SettingsEditor({ content, updateField }: {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Винное сопровождение</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Винное сопровождение</h3>
         <FormField label="Текст (IT)" value={content.winePairingText} onChange={(v: string) => updateField("winePairingText", v)} />
         <FormField label="Текст (EN)" value={content.winePairingTextEn} onChange={(v: string) => updateField("winePairingTextEn", v)} />
         <FormField label="Текст (RU)" value={content.winePairingTextRu} onChange={(v: string) => updateField("winePairingTextRu", v)} />
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Футер</h3>
+        <h3 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))]">Футер</h3>
         <FormField label="Копирайт (IT)" value={content.copyrightText} onChange={(v: string) => updateField("copyrightText", v)} />
         <FormField label="Копирайт (EN)" value={content.copyrightTextEn} onChange={(v: string) => updateField("copyrightTextEn", v)} />
         <FormField label="Копирайт (RU)" value={content.copyrightTextRu} onChange={(v: string) => updateField("copyrightTextRu", v)} />
@@ -410,8 +410,8 @@ function SettingsEditor({ content, updateField }: {
 function FormField({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
   return (
     <div>
-      <label className="block text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.2em] uppercase mb-2">{label}</label>
-      <input type="text" value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-0 py-2.5 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500" />
+      <label className="block text-[hsl(var(--muted-foreground))] text-xs tracking-[0.2em] uppercase mb-2">{label}</label>
+      <input type="text" value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-0 py-3 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-base font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500" />
     </div>
   );
 }
@@ -419,8 +419,8 @@ function FormField({ label, value, onChange }: { label: string; value: string; o
 function TextAreaField({ label, value, onChange, rows = 3 }: { label: string; value: string; onChange: (v: string) => void; rows?: number }) {
   return (
     <div>
-      <label className="block text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.2em] uppercase mb-2">{label}</label>
-      <textarea value={value} onChange={(e) => onChange(e.target.value)} rows={rows} className="w-full px-0 py-2.5 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500 resize-y" />
+      <label className="block text-[hsl(var(--muted-foreground))] text-xs tracking-[0.2em] uppercase mb-2">{label}</label>
+      <textarea value={value} onChange={(e) => onChange(e.target.value)} rows={rows} className="w-full px-0 py-3 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-base font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500 resize-y" />
     </div>
   );
 }
@@ -428,8 +428,8 @@ function TextAreaField({ label, value, onChange, rows = 3 }: { label: string; va
 function FormFieldSmall({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
   return (
     <div className="flex-1 min-w-0">
-      <label className="block text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.15em] uppercase mb-1.5">{label}</label>
-      <input type="text" value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-0 py-1.5 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-xs font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500" />
+      <label className="block text-[hsl(var(--muted-foreground))] text-xs tracking-[0.15em] uppercase mb-1.5">{label}</label>
+      <input type="text" value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-0 py-2 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500" />
     </div>
   );
 }

@@ -54,27 +54,27 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-8">
           <div>
-            <label className="block text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.2em] uppercase mb-3">
+            <label className="block text-[hsl(var(--muted-foreground))] text-xs tracking-[0.2em] uppercase mb-3">
               Пароль доступа
             </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500 placeholder:text-[hsl(var(--muted-foreground))]/50"
+              className="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-base font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500 placeholder:text-[hsl(var(--muted-foreground))]/50"
               placeholder="Введите пароль"
               autoFocus
             />
           </div>
 
           {error && (
-            <p className="text-[hsl(var(--primary))] text-xs text-center tracking-wider">{error}</p>
+            <p className="text-[hsl(var(--primary))] text-sm text-center tracking-wider">{error}</p>
           )}
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-6 py-4 text-[10px] tracking-[0.3em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500 disabled:opacity-30"
+            className="w-full px-6 py-4 text-sm tracking-[0.3em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500 disabled:opacity-30"
           >
             {loading ? (
               <span className="flex items-center justify-center gap-2">
@@ -90,7 +90,7 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <p className="text-[hsl(var(--muted-foreground))] text-[10px] text-center mt-12 tracking-[0.2em]">
+        <p className="text-[hsl(var(--muted-foreground))] text-xs text-center mt-12 tracking-[0.2em]">
           © 2025 AUREO
         </p>
       </div>

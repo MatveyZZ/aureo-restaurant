@@ -144,14 +144,14 @@ export default function MenuEditorPage() {
       {/* Header */}
       <header className="border-b border-[hsl(var(--border))] px-8 py-5 flex items-center justify-between sticky top-0 bg-[hsl(var(--background))]/95 backdrop-blur-sm z-10">
         <div className="flex items-center gap-4">
-          <Link href="/admin" className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">← Назад</Link>
+          <Link href="/admin" className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">← Назад</Link>
           <div className="w-px h-4 bg-[hsl(var(--border))]" />
-          <h1 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--foreground))]">Редактор меню</h1>
+          <h1 className="text-base tracking-[0.2em] uppercase text-[hsl(var(--foreground))]">Редактор меню</h1>
         </div>
         <div className="flex items-center gap-4">
-          {saved && <span className="text-xs text-[hsl(var(--primary))] tracking-[0.2em] animate-pulse">Сохранено</span>}
-          {error && <span className="text-xs text-red-400 tracking-wider">{error}</span>}
-          <button onClick={handleSave} disabled={saving} className="px-6 py-2.5 text-[10px] tracking-[0.3em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500 disabled:opacity-30">
+          {saved && <span className="text-sm text-[hsl(var(--primary))] tracking-[0.2em] animate-pulse">Сохранено</span>}
+          {error && <span className="text-sm text-red-400 tracking-wider">{error}</span>}
+          <button onClick={handleSave} disabled={saving} className="px-6 py-2.5 text-sm tracking-[0.3em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500 disabled:opacity-30">
             {saving ? "Сохранение..." : "Сохранить всё"}
           </button>
         </div>
@@ -168,7 +168,7 @@ export default function MenuEditorPage() {
                 <button
                   key={cat.key}
                   onClick={() => { setActiveCategory(cat.key); setEditingItem(null); setShowAddForm(false); }}
-                  className={`w-full text-left px-4 py-3 text-xs tracking-[0.15em] uppercase transition-all duration-300 ${
+                  className={`w-full text-left px-4 py-3 text-sm tracking-[0.15em] uppercase transition-all duration-300 ${
                     activeCategory === cat.key
                       ? "text-[hsl(var(--primary))] border-l-2 border-[hsl(var(--primary))] bg-[hsl(var(--primary))]/5"
                       : "text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]"
@@ -189,7 +189,7 @@ export default function MenuEditorPage() {
                 <h2 className="text-lg tracking-[0.15em] uppercase text-[hsl(var(--foreground))]">{category.icon} {category.label}</h2>
                 <div className="w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent mt-2" />
               </div>
-              <button onClick={() => setShowAddForm(true)} className="px-4 py-2.5 text-[10px] tracking-[0.2em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500">
+              <button onClick={() => setShowAddForm(true)} className="px-4 py-2.5 text-sm tracking-[0.2em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500">
                 + Добавить
               </button>
             </div>
@@ -203,7 +203,7 @@ export default function MenuEditorPage() {
           )}
 
           {items.length === 0 ? (
-            <div className="text-center py-16 text-[hsl(var(--muted-foreground))] text-xs tracking-[0.2em]">Нет блюд. Добавьте первое!</div>
+            <div className="text-center py-16 text-[hsl(var(--muted-foreground))] text-sm tracking-[0.2em]">Нет блюд. Добавьте первое!</div>
           ) : (
             <div className="space-y-4">
               {items.map((item) => (
@@ -225,10 +225,10 @@ export default function MenuEditorPage() {
             <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
               <div className="bg-[hsl(var(--background))] border border-[hsl(var(--border))] p-6 max-w-sm w-full mx-4">
                 <h3 className="text-sm tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-2">Удалить блюдо?</h3>
-                <p className="text-xs text-[hsl(var(--muted-foreground))] mb-6">Это действие нельзя отменить.</p>
+                <p className="text-sm text-[hsl(var(--muted-foreground))] mb-6">Это действие нельзя отменить.</p>
                 <div className="flex gap-3 justify-end">
-                  <button onClick={() => setDeleteConfirm(null)} className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
-                  <button onClick={() => handleDeleteItem(deleteConfirm)} className="px-4 py-2 text-xs tracking-[0.2em] uppercase bg-red-600 text-white hover:bg-red-500 transition-colors">Удалить</button>
+                  <button onClick={() => setDeleteConfirm(null)} className="px-4 py-2 text-sm tracking-[0.2em] uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
+                  <button onClick={() => handleDeleteItem(deleteConfirm)} className="px-4 py-2 text-sm tracking-[0.2em] uppercase bg-red-600 text-white hover:bg-red-500 transition-colors">Удалить</button>
                 </div>
               </div>
             </div>
@@ -267,7 +267,7 @@ function MenuItemCard({ item, isEditing, onEdit, onSave, onCancel, onDelete, onT
           <FormField label="Цена" value={editForm.price} onChange={(v) => setEditForm({ ...editForm, price: v })} />
           <FormField label="Изображение" value={editForm.image} onChange={(v) => setEditForm({ ...editForm, image: v })} />
           <div className="flex items-end">
-            <label className="flex items-center gap-2 text-xs text-[hsl(var(--muted-foreground))] cursor-pointer">
+            <label className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] cursor-pointer">
               <input type="checkbox" checked={editForm.available} onChange={(e) => setEditForm({ ...editForm, available: e.target.checked })} className="accent-[hsl(var(--primary))]" />
               Доступно
             </label>
@@ -277,8 +277,8 @@ function MenuItemCard({ item, isEditing, onEdit, onSave, onCancel, onDelete, onT
         <TextAreaField label="Описание (EN)" value={editForm.descriptionEn} onChange={(v) => setEditForm({ ...editForm, descriptionEn: v })} rows={2} />
         <TextAreaField label="Описание (RU)" value={editForm.descriptionRu} onChange={(v) => setEditForm({ ...editForm, descriptionRu: v })} rows={2} />
         <div className="flex gap-3 mt-4 justify-end">
-          <button onClick={onCancel} className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
-          <button onClick={() => onSave(editForm)} className="px-4 py-2 text-xs tracking-[0.2em] uppercase bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90 transition-opacity">Сохранить</button>
+          <button onClick={onCancel} className="px-4 py-2 text-sm tracking-[0.2em] uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
+          <button onClick={() => onSave(editForm)} className="px-4 py-2 text-sm tracking-[0.2em] uppercase bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90 transition-opacity">Сохранить</button>
         </div>
       </div>
     );
@@ -290,11 +290,11 @@ function MenuItemCard({ item, isEditing, onEdit, onSave, onCancel, onDelete, onT
         <div className="flex-1">
           <div className="flex items-center gap-3">
             <h3 className="text-sm tracking-widest uppercase text-[hsl(var(--foreground))]">{item.name}</h3>
-            {!item.available && <span className="text-[10px] tracking-[0.2em] uppercase text-red-400 border border-red-400/50 px-2 py-0.5">Недоступно</span>}
+            {!item.available && <span className="text-xs tracking-[0.2em] uppercase text-red-400 border border-red-400/50 px-2 py-0.5">Недоступно</span>}
           </div>
           <div className="flex gap-3 mt-1">
-            <span className="text-[10px] text-[hsl(var(--muted-foreground))]">{item.nameEn}</span>
-            <span className="text-[10px] text-[hsl(var(--muted-foreground))]">{item.nameRu}</span>
+            <span className="text-xs text-[hsl(var(--muted-foreground))]">{item.nameEn}</span>
+            <span className="text-xs text-[hsl(var(--muted-foreground))]">{item.nameRu}</span>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -306,10 +306,10 @@ function MenuItemCard({ item, isEditing, onEdit, onSave, onCancel, onDelete, onT
           </div>
         </div>
       </div>
-      <p className="text-xs text-[hsl(var(--muted-foreground))] leading-relaxed">{item.description}</p>
+      <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed">{item.description}</p>
       <div className="flex gap-3 mt-2">
-        <p className="text-[10px] text-[hsl(var(--muted-foreground))]">{item.descriptionEn}</p>
-        <p className="text-[10px] text-[hsl(var(--muted-foreground))]">{item.descriptionRu}</p>
+        <p className="text-sm text-[hsl(var(--muted-foreground))]">{item.descriptionEn}</p>
+        <p className="text-sm text-[hsl(var(--muted-foreground))]">{item.descriptionRu}</p>
       </div>
     </div>
   );
@@ -326,7 +326,7 @@ function AddItemForm({ onCancel, onAdd }: { onCancel: () => void; onAdd: (item: 
         <FormField label="Цена" value={form.price} onChange={(v) => setForm({ ...form, price: v })} />
         <FormField label="Изображение" value={form.image} onChange={(v) => setForm({ ...form, image: v })} />
         <div className="flex items-end">
-          <label className="flex items-center gap-2 text-xs text-[hsl(var(--muted-foreground))] cursor-pointer">
+          <label className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))] cursor-pointer">
             <input type="checkbox" checked={form.available} onChange={(e) => setForm({ ...form, available: e.target.checked })} className="accent-[hsl(var(--primary))]" />
             Доступно
           </label>
@@ -336,8 +336,8 @@ function AddItemForm({ onCancel, onAdd }: { onCancel: () => void; onAdd: (item: 
       <TextAreaField label="Описание (EN)" value={form.descriptionEn} onChange={(v) => setForm({ ...form, descriptionEn: v })} rows={2} />
       <TextAreaField label="Описание (RU)" value={form.descriptionRu} onChange={(v) => setForm({ ...form, descriptionRu: v })} rows={2} />
       <div className="flex gap-3 mt-4 justify-end">
-        <button onClick={onCancel} className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
-        <button onClick={() => onAdd(form)} disabled={!form.name || !form.price} className="px-4 py-2 text-xs tracking-[0.2em] uppercase bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90 transition-opacity disabled:opacity-50">Добавить</button>
+        <button onClick={onCancel} className="px-4 py-2 text-sm tracking-[0.2em] uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
+        <button onClick={() => onAdd(form)} disabled={!form.name || !form.price} className="px-4 py-2 text-sm tracking-[0.2em] uppercase bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90 transition-opacity disabled:opacity-50">Добавить</button>
       </div>
     </div>
   );
@@ -346,8 +346,8 @@ function AddItemForm({ onCancel, onAdd }: { onCancel: () => void; onAdd: (item: 
 function FormField({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
   return (
     <div>
-      <label className="block text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.2em] uppercase mb-2">{label}</label>
-      <input type="text" value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-0 py-2.5 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500" />
+      <label className="block text-[hsl(var(--muted-foreground))] text-xs tracking-[0.2em] uppercase mb-2">{label}</label>
+      <input type="text" value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-0 py-3 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-base font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500" />
     </div>
   );
 }
@@ -355,8 +355,8 @@ function FormField({ label, value, onChange }: { label: string; value: string; o
 function TextAreaField({ label, value, onChange, rows = 3 }: { label: string; value: string; onChange: (v: string) => void; rows?: number }) {
   return (
     <div>
-      <label className="block text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.2em] uppercase mb-2">{label}</label>
-      <textarea value={value} onChange={(e) => onChange(e.target.value)} rows={rows} className="w-full px-0 py-2.5 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500 resize-y" />
+      <label className="block text-[hsl(var(--muted-foreground))] text-xs tracking-[0.2em] uppercase mb-2">{label}</label>
+      <textarea value={value} onChange={(e) => onChange(e.target.value)} rows={rows} className="w-full px-0 py-3 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-base font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500 resize-y" />
     </div>
   );
 }
