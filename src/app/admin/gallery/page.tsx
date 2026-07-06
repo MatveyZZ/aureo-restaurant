@@ -92,37 +92,38 @@ export default function GalleryEditorPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-[hsl(var(--background))] flex items-center justify-center">
-        <div className="text-[hsl(var(--primary))] text-sm tracking-wider">Загрузка...</div>
+        <div className="text-[hsl(var(--primary))] text-xs tracking-[0.3em] animate-pulse">Загрузка...</div>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-[hsl(var(--background))]">
-      <header className="border-b border-[hsl(var(--border))] px-8 py-4 flex items-center justify-between sticky top-0 bg-[hsl(var(--background))] z-10">
+      {/* Header */}
+      <header className="border-b border-[hsl(var(--border))] px-8 py-5 flex items-center justify-between sticky top-0 bg-[hsl(var(--background))]/95 backdrop-blur-sm z-10">
         <div className="flex items-center gap-4">
-          <a href="/admin" className="text-sm tracking-wider uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors">← Dashboard</a>
-          <span className="text-[hsl(var(--border))]">|</span>
-          <h1 className="text-sm tracking-[0.15em] uppercase text-[hsl(var(--foreground))]">Редактор галереи</h1>
+          <a href="/admin" className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">← Назад</a>
+          <div className="w-[1px] h-4 bg-[hsl(var(--border))]" />
+          <h1 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--foreground))]">Редактор галереи</h1>
         </div>
-        <div className="flex items-center gap-3">
-          {saved && <span className="text-xs text-emerald-400 tracking-wider">Сохранено!</span>}
+        <div className="flex items-center gap-4">
+          {saved && <span className="text-xs text-[hsl(var(--primary))] tracking-[0.2em] animate-pulse">Сохранено</span>}
           {error && <span className="text-xs text-red-400 tracking-wider">{error}</span>}
-          <button onClick={handleSave} disabled={saving} className="px-6 py-2 text-xs tracking-[0.2em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-300 disabled:opacity-50">
+          <button onClick={handleSave} disabled={saving} className="px-6 py-2.5 text-[10px] tracking-[0.3em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500 disabled:opacity-30">
             {saving ? "Сохранение..." : "Сохранить"}
           </button>
         </div>
       </header>
 
-      <main className="p-8">
-        <div className="flex items-center justify-between mb-6">
-          <p className="text-xs text-[hsl(var(--muted-foreground))]">{content?.gallery.length || 0} фотографий</p>
-          <button onClick={() => setShowAddForm(true)} className="px-4 py-2 text-xs tracking-wider uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-300">+ Добавить фото</button>
+      <main className="p-8 lg:p-12">
+        <div className="flex items-center justify-between mb-8">
+          <p className="text-xs text-[hsl(var(--muted-foreground))] tracking-[0.2em]">{content?.gallery.length || 0} фотографий</p>
+          <button onClick={() => setShowAddForm(true)} className="px-4 py-2.5 text-[10px] tracking-[0.2em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500">+ Добавить</button>
         </div>
 
         {showAddForm && (
           <div className="mb-8 border border-[hsl(var(--primary))] p-6 bg-[hsl(var(--primary))]/5">
-            <h3 className="text-sm tracking-wider uppercase text-[hsl(var(--primary))] mb-4">Новое фото</h3>
+            <h3 className="text-sm tracking-[0.15em] uppercase text-[hsl(var(--primary))] mb-4">Новое фото</h3>
             <AddImageForm onCancel={() => setShowAddForm(false)} onAdd={handleAddImage} />
           </div>
         )}
@@ -144,17 +145,17 @@ export default function GalleryEditorPage() {
         </div>
 
         {(!content?.gallery || content.gallery.length === 0) && (
-          <div className="text-center py-16 text-[hsl(var(--muted-foreground))] text-sm">Галерея пуста. Добавьте первое фото!</div>
+          <div className="text-center py-16 text-[hsl(var(--muted-foreground))] text-xs tracking-[0.2em]">Галерея пуста. Добавьте первое фото!</div>
         )}
 
         {deleteConfirm !== null && (
           <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
             <div className="bg-[hsl(var(--background))] border border-[hsl(var(--border))] p-6 max-w-sm w-full mx-4">
-              <h3 className="text-sm tracking-wider uppercase text-[hsl(var(--foreground))] mb-2">Удалить фото?</h3>
+              <h3 className="text-sm tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-2">Удалить фото?</h3>
               <p className="text-xs text-[hsl(var(--muted-foreground))] mb-6">Это действие нельзя отменить.</p>
               <div className="flex gap-3 justify-end">
-                <button onClick={() => setDeleteConfirm(null)} className="px-4 py-2 text-xs tracking-wider uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
-                <button onClick={() => handleDeleteImage(deleteConfirm)} className="px-4 py-2 text-xs tracking-wider uppercase bg-red-600 text-white hover:bg-red-500 transition-colors">Удалить</button>
+                <button onClick={() => setDeleteConfirm(null)} className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
+                <button onClick={() => handleDeleteImage(deleteConfirm)} className="px-4 py-2 text-xs tracking-[0.2em] uppercase bg-red-600 text-white hover:bg-red-500 transition-colors">Удалить</button>
               </div>
             </div>
           </div>
@@ -186,14 +187,14 @@ function GalleryThumbnail({ image, isEditing, onEdit, onSave, onCancel, onDelete
           <FormField label="Описание (EN)" value={editForm.altEn} onChange={(v: string) => setEditForm({ ...editForm, altEn: v })} />
           <FormField label="Описание (RU)" value={editForm.altRu} onChange={(v: string) => setEditForm({ ...editForm, altRu: v })} />
           <div>
-            <label className="block text-[hsl(var(--muted-foreground))] text-xs tracking-wider uppercase mb-1.5">Размер</label>
-            <select value={editForm.span} onChange={(e) => setEditForm({ ...editForm, span: e.target.value })} className="w-full px-3 py-2 bg-transparent border border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm focus:outline-none focus:border-[hsl(var(--primary))] transition-colors">
+            <label className="block text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.2em] uppercase mb-1.5">Размер</label>
+            <select value={editForm.span} onChange={(e) => setEditForm({ ...editForm, span: e.target.value })} className="w-full px-3 py-2 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500">
               {SPAN_OPTIONS.map((opt) => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
             </select>
           </div>
           <div className="flex gap-2 justify-end">
-            <button onClick={onCancel} className="px-3 py-1.5 text-xs tracking-wider uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
-            <button onClick={() => onSave(editForm)} className="px-3 py-1.5 text-xs tracking-wider uppercase bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90 transition-opacity">Сохранить</button>
+            <button onClick={onCancel} className="px-3 py-1.5 text-xs tracking-[0.2em] uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
+            <button onClick={() => onSave(editForm)} className="px-3 py-1.5 text-xs tracking-[0.2em] uppercase bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90 transition-opacity">Сохранить</button>
           </div>
         </div>
       </div>
@@ -201,11 +202,11 @@ function GalleryThumbnail({ image, isEditing, onEdit, onSave, onCancel, onDelete
   }
 
   return (
-    <div className={`group relative border border-[hsl(var(--border))] overflow-hidden hover:border-[hsl(var(--primary))]/50 transition-colors ${image.span}`}>
+    <div className={`group relative border border-[hsl(var(--border))] overflow-hidden hover:border-[hsl(var(--primary))]/50 transition-all duration-300 ${image.span}`}>
       <div className="aspect-square bg-[hsl(var(--muted))] flex items-center justify-center">
         <div className="text-center">
           <div className="text-3xl mb-2 opacity-30">🖼</div>
-          <p className="text-[10px] text-[hsl(var(--muted-foreground))] tracking-wider uppercase">{image.src}</p>
+          <p className="text-[10px] text-[hsl(var(--muted-foreground))] tracking-[0.2em] uppercase">{image.src}</p>
         </div>
       </div>
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-colors duration-300 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100">
@@ -235,14 +236,14 @@ function AddImageForm({ onCancel, onAdd }: { onCancel: () => void; onAdd: (image
       <FormField label="Описание (EN)" value={form.altEn} onChange={(v: string) => setForm({ ...form, altEn: v })} />
       <FormField label="Описание (RU)" value={form.altRu} onChange={(v: string) => setForm({ ...form, altRu: v })} />
       <div>
-        <label className="block text-[hsl(var(--muted-foreground))] text-xs tracking-wider uppercase mb-1.5">Размер</label>
-        <select value={form.span} onChange={(e) => setForm({ ...form, span: e.target.value })} className="w-full px-4 py-2.5 bg-transparent border border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm focus:outline-none focus:border-[hsl(var(--primary))] transition-colors">
+        <label className="block text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.2em] uppercase mb-1.5">Размер</label>
+        <select value={form.span} onChange={(e) => setForm({ ...form, span: e.target.value })} className="w-full px-4 py-2.5 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500">
           {SPAN_OPTIONS.map((opt) => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
         </select>
       </div>
       <div className="flex gap-3 justify-end">
-        <button onClick={onCancel} className="px-4 py-2 text-xs tracking-wider uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
-        <button onClick={() => onAdd(form)} disabled={!form.src} className="px-4 py-2 text-xs tracking-wider uppercase bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90 transition-opacity disabled:opacity-50">Добавить</button>
+        <button onClick={onCancel} className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors">Отмена</button>
+        <button onClick={() => onAdd(form)} disabled={!form.src} className="px-4 py-2 text-xs tracking-[0.2em] uppercase bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90 transition-opacity disabled:opacity-50">Добавить</button>
       </div>
     </div>
   );
@@ -251,8 +252,8 @@ function AddImageForm({ onCancel, onAdd }: { onCancel: () => void; onAdd: (image
 function FormField({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
   return (
     <div>
-      <label className="block text-[hsl(var(--muted-foreground))] text-xs tracking-wider uppercase mb-1.5">{label}</label>
-      <input type="text" value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-4 py-2.5 bg-transparent border border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm focus:outline-none focus:border-[hsl(var(--primary))] transition-colors" />
+      <label className="block text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.2em] uppercase mb-2">{label}</label>
+      <input type="text" value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-0 py-2.5 bg-transparent border-0 border-b border-[hsl(var(--border))] text-[hsl(var(--foreground))] text-sm font-light focus:outline-none focus:border-[hsl(var(--primary))] transition-colors duration-500" />
     </div>
   );
 }

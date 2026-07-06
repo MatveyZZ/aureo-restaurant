@@ -43,7 +43,7 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-[hsl(var(--background))] flex items-center justify-center">
-        <div className="text-[hsl(var(--primary))] text-sm tracking-wider">Загрузка...</div>
+        <div className="text-[hsl(var(--primary))] text-xs tracking-[0.3em] animate-pulse">Загрузка...</div>
       </div>
     );
   }
@@ -57,56 +57,73 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-[hsl(var(--background))]">
-      <header className="border-b border-[hsl(var(--border))] px-8 py-4 flex items-center justify-between">
+      {/* Header */}
+      <header className="border-b border-[hsl(var(--border))] px-8 py-6 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <span className="text-xl gold-gradient tracking-[0.3em] uppercase font-light">AUREO</span>
-          <span className="text-[hsl(var(--muted-foreground))] text-xs tracking-wider">CMS</span>
+          <div className="w-[1px] h-4 bg-[hsl(var(--border))]" />
+          <span className="text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.3em] uppercase">CMS</span>
         </div>
         <form action="/api/auth/logout" method="POST">
-          <button type="submit" className="text-xs tracking-wider uppercase text-[hsl(var(--muted-foreground))] hover:text-red-400 transition-colors">
+          <button type="submit" className="text-[10px] tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">
             Выйти
           </button>
         </form>
       </header>
 
+      {/* Main */}
       <main className="p-8 max-w-6xl mx-auto">
-        <div className="mb-10">
-          <h1 className="text-2xl font-light tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-2">
+        <div className="mb-12">
+          <h1 className="text-2xl md:text-3xl font-light tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-3">
             Панель управления
           </h1>
-          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mb-3" />
+          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mb-4" />
           {stats?.lastUpdated && (
-            <p className="text-[hsl(var(--muted-foreground))] text-xs">
+            <p className="text-[hsl(var(--muted-foreground))] text-xs tracking-wider">
               Последнее обновление: {new Date(stats.lastUpdated).toLocaleString("ru-RU")}
             </p>
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {cards.map((card) => (
             <Link
               key={card.href}
               href={card.href}
-              className="block border border-[hsl(var(--border))] p-6 hover:border-[hsl(var(--primary))] transition-colors duration-300 group"
+              className="group block border border-[hsl(var(--border))] p-6 hover:border-[hsl(var(--primary))] transition-all duration-500"
             >
-              <div className="text-2xl mb-3">{card.icon}</div>
-              <h3 className="text-sm tracking-[0.1em] uppercase text-[hsl(var(--foreground))] group-hover:text-[hsl(var(--primary))] transition-colors">
+              <div className="text-2xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity">{card.icon}</div>
+              <h3 className="text-sm tracking-[0.15em] uppercase text-[hsl(var(--foreground))] group-hover:text-[hsl(var(--primary))] transition-colors duration-500">
                 {card.title}
               </h3>
-              <p className="text-xs text-[hsl(var(--muted-foreground))] mt-1">{card.subtitle}</p>
+              <p className="text-xs text-[hsl(var(--muted-foreground))] mt-2 font-light">{card.subtitle}</p>
             </Link>
           ))}
         </div>
 
-        <div className="border border-[hsl(var(--border))] p-6">
-          <h2 className="text-sm tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-4">
+        {/* Quick Start */}
+        <div className="border border-[hsl(var(--border))] p-8">
+          <h2 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--foreground))] mb-6">
             Быстрый старт
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-[hsl(var(--muted-foreground))]">
-            <div className="flex gap-2"><span className="text-[hsl(var(--primary))]">1.</span><span>Отредактируйте меню блюд</span></div>
-            <div className="flex gap-2"><span className="text-[hsl(var(--primary))]">2.</span><span>Обновите тексты о ресторане и шеф-поваре</span></div>
-            <div className="flex gap-2"><span className="text-[hsl(var(--primary))]">3.</span><span>Загрузите фотографии в галерею</span></div>
-            <div className="flex gap-2"><span className="text-[hsl(var(--primary))]">4.</span><span>Проверьте контакты и часы работы</span></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-[hsl(var(--muted-foreground))] font-light">
+            <div className="flex gap-3">
+              <span className="text-[hsl(var(--primary))]">01</span>
+              <span>Отредактируйте меню блюд</span>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-[hsl(var(--primary))]">02</span>
+              <span>Обновите тексты о ресторане и шеф-поваре</span>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-[hsl(var(--primary))]">03</span>
+              <span>Загрузите фотографии в галерею</span>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-[hsl(var(--primary))]">04</span>
+              <span>Проверьте контакты и часы работы</span>
+            </div>
           </div>
         </div>
       </main>
