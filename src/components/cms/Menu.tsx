@@ -34,7 +34,7 @@ export async function Menu({ locale = "ru" }: MenuProps) {
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
-            <div className="w-12 md:w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto mb-4 md:mb-6" />
+            <div className="w-12 md:w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto mb-4 md:mb-6" />
           </AnimatedSection>
         </div>
 
@@ -50,10 +50,10 @@ export async function Menu({ locale = "ru" }: MenuProps) {
         </div>
 
         <div className="max-w-3xl md:max-w-4xl mx-auto">
-          {items.map((item: any, i: number) => (
+          {items.map((item: { id: number; name: string; nameEn: string; nameRu: string; description: string; descriptionEn: string; descriptionRu: string; price: string; image: string }, i: number) => (
             <AnimatedSection key={item.id} delay={0.1 * i}>
               <div className="group flex gap-4 md:gap-6 lg:gap-10 py-6 md:py-8 border-b border-[hsl(var(--border))] last:border-0">
-                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex-shrink-0 overflow-hidden">
+                <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 shrink-0 overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.name}

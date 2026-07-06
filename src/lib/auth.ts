@@ -7,11 +7,9 @@
  */
 
 import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
 
 const SESSION_COOKIE = "aureo-admin-session";
 const SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours
-const DEFAULT_PASSWORD_HASH = "$2b$10$YQ5EJ8kZ3vN2xKp7mR1sOeF6tH9wU4cV8bX0dA1gM3nJ5iP7qS9uW"; // admin123
 
 // Simple hash for demo — use bcrypt in production
 function hashPassword(password: string): string {
@@ -52,7 +50,3 @@ export async function logout(): Promise<void> {
   cookieStore.delete(SESSION_COOKIE);
 }
 
-export function requireAuth(request: NextRequest): NextResponse | null {
-  // This is a simplified check — in real API routes use verifySession()
-  return null;
-}

@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface GalleryImage {
   id: number;
@@ -102,8 +103,8 @@ export default function GalleryEditorPage() {
       {/* Header */}
       <header className="border-b border-[hsl(var(--border))] px-8 py-5 flex items-center justify-between sticky top-0 bg-[hsl(var(--background))]/95 backdrop-blur-sm z-10">
         <div className="flex items-center gap-4">
-          <a href="/admin" className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">← Назад</a>
-          <div className="w-[1px] h-4 bg-[hsl(var(--border))]" />
+          <Link href="/admin" className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">← Назад</Link>
+          <div className="w-px h-4 bg-[hsl(var(--border))]" />
           <h1 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--foreground))]">Редактор галереи</h1>
         </div>
         <div className="flex items-center gap-4">
@@ -175,8 +176,14 @@ function GalleryThumbnail({ image, isEditing, onEdit, onSave, onCancel, onDelete
   onMoveUp?: () => void;
   onMoveDown?: () => void;
 }) {
+  const prevImageRef = useRef<GalleryImage>(image);
   const [editForm, setEditForm] = useState<GalleryImage>(image);
-  useEffect(() => { setEditForm(image); }, [image]);
+  useEffect(() => {
+    if (prevImageRef.current.id !== image.id) {
+      setEditForm(image);
+      prevImageRef.current = image;
+    }
+  }, [image]);
 
   if (isEditing) {
     return (
@@ -219,7 +226,7 @@ function GalleryThumbnail({ image, isEditing, onEdit, onSave, onCancel, onDelete
           <button onClick={onMoveDown} disabled={!onMoveDown} className="p-2 text-white hover:text-[hsl(var(--primary))] transition-colors disabled:opacity-30" title="Вниз">↓</button>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/70 to-transparent">
+      <div className="absolute bottom-0 left-0 right-0 p-2 bg-linear-to-t from-black/70 to-transparent">
         <p className="text-[10px] text-white/80 truncate">{image.alt}</p>
       </div>
       <div className="absolute top-2 left-2 bg-black/50 text-white text-[10px] px-1.5 py-0.5">#{image.id}</div>

@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     if (!category || !["antipasti", "primi", "secondi", "dolci"].includes(category)) {
       return NextResponse.json({ error: "Invalid category" }, { status: 400 });
     }
-    const id = await getNextMenuId(category as any);
+    const id = await getNextMenuId(category as "antipasti" | "primi" | "secondi" | "dolci");
     return NextResponse.json({ id, category });
   }
 
@@ -28,16 +28,16 @@ export async function POST(request: NextRequest) {
 
   if (action === "add" && category && item) {
     const content = await getContent();
-    const id = await getNextMenuId(category as keyof typeof content.menu);
+    const id = await getNextMenuId(category as "antipasti" | "primi" | "secondi" | "dolci");
     const newItem = { ...item, id };
-    content.menu[category as keyof typeof content.menu].push(newItem);
+    content.menu[category as "antipasti" | "primi" | "secondi" | "dolci"].push(newItem);
     await updateContent({ menu: content.menu });
     return NextResponse.json({ success: true, item: newItem });
   }
 
   if (action === "update" && category && item) {
     const content = await getContent();
-    const items = content.menu[category as keyof typeof content.menu];
+    const items = content.menu[category as "antipasti" | "primi" | "secondi" | "dolci"];
     const index = items.findIndex((i) => i.id === item.id);
     if (index !== -1) {
       items[index] = item;
@@ -49,12 +49,12 @@ export async function POST(request: NextRequest) {
 
   if (action === "delete" && category && item?.id) {
     const content = await getContent();
-    const items = content.menu[category as keyof typeof content.menu];
+    const items = content.menu[category as "antipasti" | "primi" | "secondi" | "dolci"];
     const filtered = items.filter((i) => i.id !== item.id);
     if (filtered.length === items.length) {
       return NextResponse.json({ error: "Item not found" }, { status: 404 });
     }
-    content.menu[category as keyof typeof content.menu] = filtered;
+    content.menu[category as "antipasti" | "primi" | "secondi" | "dolci"] = filtered;
     await updateContent({ menu: content.menu });
     return NextResponse.json({ success: true });
   }

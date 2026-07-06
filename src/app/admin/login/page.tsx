@@ -38,7 +38,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-[hsl(var(--background))] flex items-center justify-center px-4 relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
-        <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[hsl(var(--primary))] to-transparent" />
+        <div className="w-px h-full bg-linear-to-b from-transparent via-[hsl(var(--primary))] to-transparent" />
       </div>
 
       <div className="w-full max-w-md relative z-10">
@@ -46,7 +46,7 @@ export default function LoginPage() {
           <span className="text-4xl md:text-5xl gold-gradient tracking-[0.4em] uppercase font-light block mb-4">
             AUREO
           </span>
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto mb-4" />
+          <div className="w-24 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto mb-4" />
           <p className="text-[hsl(var(--muted-foreground))] text-xs tracking-[0.3em] uppercase">
             Панель управления
           </p>

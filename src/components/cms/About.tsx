@@ -21,7 +21,7 @@ export async function About() {
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
-            <div className="w-12 md:w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto" />
+            <div className="w-12 md:w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto" />
           </AnimatedSection>
         </div>
 
@@ -57,7 +57,7 @@ export async function About() {
 
         {about?.stats && about.stats.length > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-16 md:mt-20 max-w-4xl mx-auto">
-            {about.stats.map((stat: any, i: number) => (
+            {about.stats.map((stat: { value: string; label: string; labelEn: string; labelRu: string }, i: number) => (
               <AnimatedSection key={i} delay={0.1 * i}>
                 <div className="text-center">
                   <div className="text-2xl md:text-3xl lg:text-4xl text-[hsl(var(--primary))] mb-2">

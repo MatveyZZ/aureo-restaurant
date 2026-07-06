@@ -21,13 +21,13 @@ export async function Chef() {
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
-            <div className="w-12 md:w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto" />
+            <div className="w-12 md:w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto" />
           </AnimatedSection>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 md:gap-16 max-w-6xl mx-auto items-center">
           <AnimatedSection direction="right" delay={0.4}>
-            <div className="relative aspect-[3/4] overflow-hidden border border-[hsl(var(--border))]">
+            <div className="relative aspect-3/4 overflow-hidden border border-[hsl(var(--border))]">
               <img
                 src={chef?.image || content.settings?.chefImage || "/images/chef.jpg"}
                 alt={chef?.name}

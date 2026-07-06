@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface MenuItem {
   id: number;
@@ -143,8 +144,8 @@ export default function MenuEditorPage() {
       {/* Header */}
       <header className="border-b border-[hsl(var(--border))] px-8 py-5 flex items-center justify-between sticky top-0 bg-[hsl(var(--background))]/95 backdrop-blur-sm z-10">
         <div className="flex items-center gap-4">
-          <a href="/admin" className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">← Назад</a>
-          <div className="w-[1px] h-4 bg-[hsl(var(--border))]" />
+          <Link href="/admin" className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">← Назад</Link>
+          <div className="w-px h-4 bg-[hsl(var(--border))]" />
           <h1 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--foreground))]">Редактор меню</h1>
         </div>
         <div className="flex items-center gap-4">
@@ -158,7 +159,7 @@ export default function MenuEditorPage() {
 
       <div className="flex min-h-[calc(100vh-65px)]">
         {/* Sidebar */}
-        <aside className="w-64 border-r border-[hsl(var(--border))] p-6 flex-shrink-0">
+        <aside className="w-64 border-r border-[hsl(var(--border))] p-6 shrink-0">
           <nav className="space-y-1">
             {CATEGORIES.map((cat) => {
               const catKey = cat.key as keyof MenuCategories;
@@ -186,7 +187,7 @@ export default function MenuEditorPage() {
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h2 className="text-lg tracking-[0.15em] uppercase text-[hsl(var(--foreground))]">{category.icon} {category.label}</h2>
-                <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mt-2" />
+                <div className="w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent mt-2" />
               </div>
               <button onClick={() => setShowAddForm(true)} className="px-4 py-2.5 text-[10px] tracking-[0.2em] uppercase border border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] transition-all duration-500">
                 + Добавить
@@ -247,8 +248,14 @@ function MenuItemCard({ item, isEditing, onEdit, onSave, onCancel, onDelete, onT
   onDelete: () => void;
   onToggleAvailable: () => void;
 }) {
+  const prevItemRef = useRef<MenuItem>(item);
   const [editForm, setEditForm] = useState<MenuItem>(item);
-  useEffect(() => { setEditForm(item); }, [item]);
+  useEffect(() => {
+    if (prevItemRef.current.id !== item.id) {
+      setEditForm(item);
+      prevItemRef.current = item;
+    }
+  }, [item]);
 
   if (isEditing) {
     return (
@@ -282,7 +289,7 @@ function MenuItemCard({ item, isEditing, onEdit, onSave, onCancel, onDelete, onT
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1">
           <div className="flex items-center gap-3">
-            <h3 className="text-sm tracking-[0.1em] uppercase text-[hsl(var(--foreground))]">{item.name}</h3>
+            <h3 className="text-sm tracking-widest uppercase text-[hsl(var(--foreground))]">{item.name}</h3>
             {!item.available && <span className="text-[10px] tracking-[0.2em] uppercase text-red-400 border border-red-400/50 px-2 py-0.5">Недоступно</span>}
           </div>
           <div className="flex gap-3 mt-1">

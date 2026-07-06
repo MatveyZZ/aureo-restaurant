@@ -12,7 +12,7 @@ export async function Footer() {
             {settings?.restaurantNameRu || settings?.restaurantName || "AUREO"}
           </span>
 
-          <div className="w-12 md:w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto mb-4 md:mb-6" />
+          <div className="w-12 md:w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto mb-4 md:mb-6" />
 
           <p className="text-[hsl(var(--muted-foreground))] text-sm md:text-base font-light italic mb-6 md:mb-8">
             {settings?.taglineRu || settings?.tagline}

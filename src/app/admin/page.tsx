@@ -61,7 +61,7 @@ export default function DashboardPage() {
       <header className="border-b border-[hsl(var(--border))] px-8 py-6 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <span className="text-xl gold-gradient tracking-[0.3em] uppercase font-light">AUREO</span>
-          <div className="w-[1px] h-4 bg-[hsl(var(--border))]" />
+          <div className="w-px h-4 bg-[hsl(var(--border))]" />
           <span className="text-[hsl(var(--muted-foreground))] text-[10px] tracking-[0.3em] uppercase">CMS</span>
         </div>
         <form action="/api/auth/logout" method="POST">
@@ -77,7 +77,7 @@ export default function DashboardPage() {
           <h1 className="text-2xl md:text-3xl font-light tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-3">
             Панель управления
           </h1>
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mb-4" />
+          <div className="w-24 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent mb-4" />
           {stats?.lastUpdated && (
             <p className="text-[hsl(var(--muted-foreground))] text-xs tracking-wider">
               Последнее обновление: {new Date(stats.lastUpdated).toLocaleString("ru-RU")}

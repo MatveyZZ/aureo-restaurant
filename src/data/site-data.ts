@@ -420,8 +420,6 @@ function readContent(): SiteContent {
 }
 
 function writeContent(content: SiteContent): void {
-  const dir = join(DATA_FILE, "..");
-  // ensure directory exists
   writeFileSync(DATA_FILE, JSON.stringify(content, null, 2), "utf-8");
 }
 

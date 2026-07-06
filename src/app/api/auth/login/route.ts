@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { login as doLogin, logout as doLogout } from "@/lib/auth";
-import { verifySession } from "@/lib/auth";
+import { login } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
   const { password } = await request.json();
-  const success = await doLogin(password);
+  const success = await login(password);
   if (success) {
     return NextResponse.json({ success: true });
   }

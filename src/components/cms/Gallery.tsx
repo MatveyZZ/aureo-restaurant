@@ -21,7 +21,7 @@ export async function Gallery() {
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
-            <div className="w-12 md:w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto" />
+            <div className="w-12 md:w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto" />
           </AnimatedSection>
         </div>
 
@@ -29,7 +29,7 @@ export async function Gallery() {
           {gallery.map((image: any, i: number) => (
             <AnimatedSection key={image.id} delay={0.1 * i} direction="scale">
               <div className={`relative overflow-hidden group ${image.span}`}>
-                <div className="aspect-[4/3]">
+                <div className="aspect-4/3">
                   <img
                     src={image.src}
                     alt={image.altRu || image.alt}

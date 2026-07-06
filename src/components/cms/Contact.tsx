@@ -22,7 +22,7 @@ export async function Contact() {
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
-            <div className="w-12 md:w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto" />
+            <div className="w-12 md:w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent mx-auto" />
           </AnimatedSection>
         </div>
 

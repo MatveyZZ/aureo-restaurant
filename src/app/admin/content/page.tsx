@@ -2,8 +2,74 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type SectionKey = "about" | "chef" | "contact" | "settings";
+
+interface StatItem {
+  value: string;
+  label: string;
+  labelEn: string;
+  labelRu: string;
+}
+
+interface ContentData {
+  about?: {
+    title: string;
+    titleEn: string;
+    titleRu: string;
+    subtitle: string;
+    subtitleEn: string;
+    subtitleRu: string;
+    paragraph1: string;
+    paragraph1En: string;
+    paragraph1Ru: string;
+    paragraph2: string;
+    paragraph2En: string;
+    paragraph2Ru: string;
+    paragraph3: string;
+    paragraph3En: string;
+    paragraph3Ru: string;
+    stats: StatItem[];
+  };
+  chef?: {
+    name: string;
+    nameEn: string;
+    nameRu: string;
+    subtitle: string;
+    subtitleEn: string;
+    subtitleRu: string;
+    paragraph1: string;
+    paragraph1En: string;
+    paragraph1Ru: string;
+    paragraph2: string;
+    paragraph2En: string;
+    paragraph2Ru: string;
+    quote: string;
+    quoteEn: string;
+    quoteRu: string;
+  };
+  contact?: {
+    address: string;
+    addressEn: string;
+    addressRu: string;
+    phone: string;
+    email: string;
+    mapEmbedUrl: string;
+    hours: {
+      lunchStart: string;
+      lunchEnd: string;
+      dinnerStart: string;
+      dinnerEnd: string;
+      dinnerEndSun: string;
+      closedDay: string;
+    };
+    reservationText: string;
+    reservationTextEn: string;
+    reservationTextRu: string;
+  };
+  settings?: Record<string, string>;
+}
 
 const SECTIONS: { key: SectionKey; label: string; icon: string }[] = [
   { key: "about", label: "О ресторане", icon: "📖" },
@@ -13,7 +79,7 @@ const SECTIONS: { key: SectionKey; label: string; icon: string }[] = [
 ];
 
 export default function ContentEditorPage() {
-  const [content, setContent] = useState<any>(null);
+  const [content, setContent] = useState<ContentData | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -47,15 +113,16 @@ export default function ContentEditorPage() {
     setSaving(false);
   };
 
-  const updateField = (field: string, value: any) => {
+  const updateField = (field: string, value: unknown) => {
     if (!content) return;
-    setContent({ ...content, [activeSection]: { ...content[activeSection], [field]: value } });
+    setContent({ ...content, [activeSection]: { ...content[activeSection as keyof ContentData], [field]: value } });
   };
 
   const updateNested = (nested: string, field: string, value: string) => {
     if (!content) return;
-    const current = content[activeSection][nested] || {};
-    setContent({ ...content, [activeSection]: { ...content[activeSection], [nested]: { ...current, [field]: value } } });
+    const current = content[activeSection as keyof ContentData] as Record<string, unknown>;
+    const nestedObj = (current[nested] as Record<string, unknown>) || {};
+    setContent({ ...content, [activeSection]: { ...current, [nested]: { ...nestedObj, [field]: value } } });
   };
 
   const updateStat = (index: number, field: string, value: string) => {
@@ -72,7 +139,7 @@ export default function ContentEditorPage() {
 
   const removeStat = (index: number) => {
     if (!content?.about) return;
-    setContent({ ...content, about: { ...content.about, stats: content.about.stats.filter((_: any, i: number) => i !== index) } });
+    setContent({ ...content, about: { ...content.about, stats: content.about.stats.filter((_, i) => i !== index) } });
   };
 
   if (loading) {
@@ -88,8 +155,8 @@ export default function ContentEditorPage() {
       {/* Header */}
       <header className="border-b border-[hsl(var(--border))] px-8 py-5 flex items-center justify-between sticky top-0 bg-[hsl(var(--background))]/95 backdrop-blur-sm z-10">
         <div className="flex items-center gap-4">
-          <a href="/admin" className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">← Назад</a>
-          <div className="w-[1px] h-4 bg-[hsl(var(--border))]" />
+          <Link href="/admin" className="text-xs tracking-[0.2em] uppercase text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--primary))] transition-colors duration-300">← Назад</Link>
+          <div className="w-px h-4 bg-[hsl(var(--border))]" />
           <h1 className="text-sm tracking-[0.2em] uppercase text-[hsl(var(--foreground))]">Редактор контента</h1>
         </div>
         <div className="flex items-center gap-4">
@@ -103,7 +170,7 @@ export default function ContentEditorPage() {
 
       <div className="flex min-h-[calc(100vh-65px)]">
         {/* Sidebar */}
-        <aside className="w-64 border-r border-[hsl(var(--border))] p-6 flex-shrink-0">
+        <aside className="w-64 border-r border-[hsl(var(--border))] p-6 shrink-0">
           <nav className="space-y-1">
             {SECTIONS.map((s) => (
               <button
@@ -134,13 +201,19 @@ export default function ContentEditorPage() {
 }
 
 /* ─── About Editor ─── */
-function AboutEditor({ content, updateField, updateStat, addStat, removeStat }: { content: any; updateField: any; updateStat: any; addStat: any; removeStat: any }) {
+function AboutEditor({ content, updateField, updateStat, addStat, removeStat }: {
+  content: ContentData["about"];
+  updateField: (field: string, value: unknown) => void;
+  updateStat: (index: number, field: string, value: string) => void;
+  addStat: () => void;
+  removeStat: (index: number) => void;
+}) {
   if (!content) return null;
   return (
     <div className="space-y-10 max-w-3xl">
       <div>
         <h2 className="text-lg tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-1">О ресторане</h2>
-        <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent" />
+        <div className="w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent" />
       </div>
 
       <div className="space-y-4">
@@ -172,7 +245,7 @@ function AboutEditor({ content, updateField, updateStat, addStat, removeStat }: 
           <span />
           <button onClick={addStat} className="text-xs text-[hsl(var(--primary))] tracking-[0.2em] uppercase hover:underline">+ Добавить</button>
         </div>
-        {content.stats.map((stat: any, i: number) => (
+        {content.stats.map((stat, i) => (
           <div key={i} className="flex items-start gap-2 p-4 border border-[hsl(var(--border))]">
             <FormFieldSmall label="Значение" value={stat.value} onChange={(v: string) => updateStat(i, "value", v)} />
             <FormFieldSmall label="Текст (IT)" value={stat.label} onChange={(v: string) => updateStat(i, "label", v)} />
@@ -187,13 +260,16 @@ function AboutEditor({ content, updateField, updateStat, addStat, removeStat }: 
 }
 
 /* ─── Chef Editor ─── */
-function ChefEditor({ content, updateField }: { content: any; updateField: any }) {
+function ChefEditor({ content, updateField }: {
+  content: ContentData["chef"];
+  updateField: (field: string, value: unknown) => void;
+}) {
   if (!content) return null;
   return (
     <div className="space-y-10 max-w-3xl">
       <div>
         <h2 className="text-lg tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-1">Шеф-повар</h2>
-        <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent" />
+        <div className="w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent" />
       </div>
 
       <div className="space-y-4">
@@ -223,13 +299,17 @@ function ChefEditor({ content, updateField }: { content: any; updateField: any }
 }
 
 /* ─── Contact Editor ─── */
-function ContactEditor({ content, updateField, updateNested }: { content: any; updateField: any; updateNested: any }) {
+function ContactEditor({ content, updateField, updateNested }: {
+  content: ContentData["contact"];
+  updateField: (field: string, value: unknown) => void;
+  updateNested: (nested: string, field: string, value: string) => void;
+}) {
   if (!content) return null;
   return (
     <div className="space-y-10 max-w-3xl">
       <div>
         <h2 className="text-lg tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-1">Контакты</h2>
-        <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent" />
+        <div className="w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent" />
       </div>
 
       <div className="space-y-4">
@@ -265,13 +345,16 @@ function ContactEditor({ content, updateField, updateNested }: { content: any; u
 }
 
 /* ─── Settings Editor ─── */
-function SettingsEditor({ content, updateField }: { content: any; updateField: any }) {
+function SettingsEditor({ content, updateField }: {
+  content: ContentData["settings"];
+  updateField: (field: string, value: unknown) => void;
+}) {
   if (!content) return null;
   return (
     <div className="space-y-10 max-w-3xl">
       <div>
         <h2 className="text-lg tracking-[0.15em] uppercase text-[hsl(var(--foreground))] mb-1">Настройки сайта</h2>
-        <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[hsl(var(--primary))] to-transparent" />
+        <div className="w-16 h-px bg-linear-to-r from-transparent via-[hsl(var(--primary))] to-transparent" />
       </div>
 
       <div className="space-y-4">
